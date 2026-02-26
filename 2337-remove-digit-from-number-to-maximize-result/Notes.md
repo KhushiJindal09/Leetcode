@@ -1,0 +1,1 @@
+<h2>remove-digit-from-number-to-maximize-result Notes</h2><hr>[ Time taken: 1 d 13 hrs 56 m 26 s ]
