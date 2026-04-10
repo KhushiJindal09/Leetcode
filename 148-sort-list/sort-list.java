@@ -11,20 +11,16 @@
 class Solution {
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null) return head;
-        // Step 1: Find middle
+        
         ListNode mid = getMid(head);
         ListNode rightHead = mid.next;
-        mid.next = null; // break list
-
-        // Step 2: Recursively sort
+        mid.next = null; 
+    
         ListNode left = sortList(head);
         ListNode right = sortList(rightHead);
 
-        // Step 3: Merge
         return merge(left, right);
     }
-
-    // Find middle of list
     private ListNode getMid(ListNode head) {
         ListNode slow = head, fast = head.next;
 
@@ -34,8 +30,6 @@ class Solution {
         }
         return slow;
     }
-
-    // Merge two sorted lists
     private ListNode merge(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
         ListNode tail = dummy;
@@ -50,11 +44,8 @@ class Solution {
             }
             tail = tail.next;
         }
-
-        // Attach remaining
         if (l1 != null) tail.next = l1;
         if (l2 != null) tail.next = l2;
-
         return dummy.next;
-    }
+}
 }
