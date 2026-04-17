@@ -1,12 +1,27 @@
 class Solution {
+
     public double myPow(double x, int n) {
-        long N = n;
-        if (N<0) return 1/myPower(x,-N);
-        return myPower(x,n);
+
+        long N = n;   // ✅ convert to long
+
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;   // safe now
+        }
+
+        return power(x, N);
     }
-    public double myPower(double x, long n) {
-    if (n == 0) return 1;
-    if (n%2 == 0) return myPower(x*x, n/2);
-    return x*myPower(x,n-1);
+
+    double power(double x, long n) {
+
+        if (n == 0) return 1;
+
+        double half = power(x, n / 2);
+
+        if (n % 2 == 0) {
+            return half * half;
+        } else {
+            return x * half * half;
+        }
     }
 }
