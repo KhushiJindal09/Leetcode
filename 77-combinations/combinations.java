@@ -1,29 +1,18 @@
 class Solution {
     public List<List<Integer>> combine(int n, int k) {
-          List<List<Integer>> ans=new ArrayList<>();
-        List<Integer> curr=new ArrayList<>();
-        boolean [] found=new boolean[n];
-        int [] nums=new int[n];
-        for(int i=0;i<n;i++){
-            nums[i]=i+1;
-        }
-        helper(0,ans,curr,nums,k,found);
+        List<List<Integer>> ans = new ArrayList<>();
+        backtrack(1, n, k, new ArrayList<>(), ans);
         return ans;
     }
-    void helper(int idx,List<List<Integer>> ans,List<Integer> curr,int[]nums,int k,boolean [] found){
-        if(curr.size()==k){
-            ans.add(new ArrayList<>(curr));
+    void backtrack(int start, int n, int k, List<Integer> path, List<List<Integer>> ans) {
+        if(path.size() == k) {
+            ans.add(new ArrayList<>(path));
             return;
         }
-        for(int i=idx;i<nums.length;i++){
-            if(found[i]){
-                continue;
-            }
-            found[i]=true;
-            curr.add(nums[i]);
-            helper(i+1,ans,curr,nums,k,found);
-            found[i]=false;
-            curr.remove(curr.size()-1);
+        for (int i = start; i<=n; i++) {
+            path.add(i);
+        backtrack(i+1, n, k, path, ans);
+        path.remove(path.size()-1);
         }
     }
 }
