@@ -10,9 +10,9 @@ class Solution {
     }
     public int gcd(int a, int b) {
         while (b != 0) {
-        int temp = b;
-        b = a % b;
-        a = temp;
+        int rem = a % b;
+        a = b;
+        b = rem;
         }
         return a;
     }
