@@ -1,0 +1,17 @@
+class Solution {
+    public boolean isGoodArray(int[] nums) {
+        int gcd = nums[0];
+        for (int i = 1; i<nums.length; i++) {
+            gcd = GCD(gcd, nums[i]);
+        }
+        return gcd ==1;
+    }
+    public int GCD(int a, int b) {
+        while (b!=0) {
+            int rem = a % b;
+            a = b;
+            b = rem;
+        }
+        return a;
+    }
+}
