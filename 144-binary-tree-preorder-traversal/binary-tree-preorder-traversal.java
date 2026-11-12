@@ -22,8 +22,8 @@ class Solution {
         while(!st.isEmpty()) {
             TreeNode node = st.pop();
             result.add(node.val);
-            if(node.right != null) st.push(node.right);
-            if (node.left != null) st.push(node.left);
+            if(node.right!=null) st.push(node.right);
+            if(node.left!=null) st.push(node.left);
         }
         return result;
     }
